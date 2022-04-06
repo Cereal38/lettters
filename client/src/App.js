@@ -1,4 +1,7 @@
+
 import React from 'react';
+// Navigation
+import Routes from "./components/routes";
 
 
 const App = () => {
@@ -6,7 +9,7 @@ const App = () => {
     return (
 	
 	<div>
-       	    <h1>Hello there</h1>
+		<Routes />
 	</div>	
 
     );
