@@ -1,5 +1,6 @@
 
 import React from 'react';
+import MainContent from '../components/home/MainContent';
 
 
 const Home = () => {
@@ -7,7 +8,13 @@ const Home = () => {
     return (
 
 	<div>
-	    <h1>This is home</h1>
+		<div className="home-page">
+			<div className="home-page__main-container">
+				<MainContent />
+			</div>
+			<div className="home-page__footer">
+			</div>
+		</div>
 	</div>
 
     );

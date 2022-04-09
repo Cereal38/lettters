@@ -1,4 +1,4 @@
 # lettters
 Online game project
 
-35:00
+40:00

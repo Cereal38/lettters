@@ -19,9 +19,9 @@ const index = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/home" element={<Home />} />
+				<Route path="/" element={<Home />} />
 				<Route path="/game" element={<Game />} />
-				<Route path = "*" element={<Navigate to="/home" replace />}/>
+				<Route path = "*" element={<Navigate to="/" replace />}/>
 			</Routes>
 		</Router>
 	)
