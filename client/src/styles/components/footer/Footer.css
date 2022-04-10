@@ -1,0 +1,33 @@
+
+.footer-div {
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	height: 100%;
+	width: 100%;
+
+	border-top: white 1px solid;
+}
+
+	.footer-div__name {
+
+		margin-right: 50px;
+
+		color: white;
+	}
+
+	.footer-div__github {
+		
+		margin-left: 50px;
+
+		text-decoration: none;
+		color: white;
+	}
+		
+		.footer-div__github:hover {
+			
+			color: #AAAAAA
+		}
