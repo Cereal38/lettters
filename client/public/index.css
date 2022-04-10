@@ -6,6 +6,14 @@ body {
 	margin: 0px;
 	padding: 0px;
 
+	font-family: sans-serif;
+
 	background-color: #444444;
 }
 
+#root {
+	
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}

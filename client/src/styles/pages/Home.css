@@ -1,20 +1,23 @@
 
 .home-page{
 	
+	position: absolute;
+	
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: center;
+	align-items: space-between;
 
 	height: 100%;
+	width: 100%;
 }
 
 .home-page__main-container {
 
-	height: 80%;
+	height: 93%;
 }
 
 .home-page__footer {
-
-	height: 20%;
+	
+	height: 7%;
 }

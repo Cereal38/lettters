@@ -8,7 +8,7 @@ const MainContent = () => {
 	return (
 
 		<div className="main-content">
-			<div className="main-content__logo-box"></div>
+			<h1 className="main-content__logo-box">Lettters</h1>
 			<Link className="main-content__play-link" to="/game">Play</Link>
 		</div>
 	)
