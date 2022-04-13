@@ -3,6 +3,7 @@ import React from 'react';
 import '../../styles/components/game/MainContent.css';
 import GivenLetters from './GivenLetters';
 import UserLetters from './UserLetters';
+import ClassicGame from './ClassicGame';
 
 
 const generateRandomLetter = () => {
@@ -33,8 +34,7 @@ const MainContent = () => {
 	return (
 
 		<div className="main-content">
-			<GivenLetters lettersArray={ lettersArray }/>
-			<UserLetters />
+			<ClassicGame />
 		</div>
 		)
 }

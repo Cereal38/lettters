@@ -5,10 +5,11 @@ import '../../styles/components/game/Letter.css';
 
 class Letter extends Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			bgColor: "",
+			car: this.props.car,
 		}
 	}
 
@@ -27,7 +28,7 @@ class Letter extends Component {
 				style={{backgroundColor: this.state.bgColor}}
 				onClick={this.letterClick} >
 				
-				{this.props.car}
+				{this.state.car}
 			</div>
 			)
 	}	
