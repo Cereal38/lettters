@@ -12,10 +12,11 @@ class Letter extends Component {
 		}
 	}
 
-	letterClick = (e) => {
+	letterClick = (event) => {
 		this.setState({
 			bgColor: "#777777",
-		})
+		});
+		event.preventDefault();
 	}
 
 
