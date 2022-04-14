@@ -50,3 +50,62 @@
 
 		background-color: #FBFBCC;
 	}
+
+	.classic-game__buttons-box {
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		height: 75px;
+		width:  500px;
+	}
+
+		.buttons-box__clear-button {
+			height: 75px;
+			width: 200px;
+
+			margin: 0;
+
+			border: black 1px solid;
+			border-radius: 10px;
+
+			font-size: 2em;
+			font-weight: bold;
+			color: #111111;
+
+			background: #FF3333;
+		}
+
+			.buttons-box__clear-button:hover {
+				filter: brightness(80%);
+			}
+
+			.buttons-box__clear-button:active {
+				filter: brightness(60%);
+			}
+
+		.buttons-box__submit-button {
+			height: 75px;
+			width: 200px;
+
+			margin: 0;
+
+			border: black 1px solid;
+			border-radius: 10px;
+
+			font-size: 2em;
+			font-weight: bold;
+			color: #111111;
+
+			background: #47D147;
+		}
+
+			.buttons-box__submit-button:hover {
+				filter:  brightness(80%);
+			}
+
+			.buttons-box__submit-button:active {
+				filter:  brightness(60%);
+			}
+

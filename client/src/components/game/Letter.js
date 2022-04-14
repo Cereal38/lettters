@@ -1,42 +1,39 @@
 
-import React, { Component } from 'react';
+import React, { useState,} from 'react';
 import '../../styles/components/game/Letter.css';
 
 
-class Letter extends Component {
+const Letter = (props) => {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			bgColor: "",
-			clickable: true,
-			car: this.props.car,
+	const bgLight = "";
+	const bgDark = "";
+
+	const car = props.car;
+	let clickable = props.clickable;
+	
+	// If letter is clickable   -> Transparent background color
+	// If not 				    -> Dark background color
+	const [bgColor, setBgColor] = useState(() => {
+
+		if (clickable == true) { return bgLight }
+		else if (clickable == false) { return bgDark }		
+	});
+
+	function switchColor() {
+
+		if (clickable == true) {
+			if (bgColor == bgLight) { setBgColor(bgDark); }
+			else if (bgColor == bgDark) { setBgColor(bgLight); }
 		}
 	}
 
-	letterClick = (event) => {
-		if (this.state.statusClick == true) {
-			this.setState({
-				bgColor: "#777777",
-				statusClick: false,
-			});
-		}
 
-		event.preventDefault();
-	}
+	return (
 
-
-	render() {
-		return (
-
-			<div className="letter"
-				style={{backgroundColor: this.state.bgColor}}
-				onClick={this.letterClick} >
-				
-				{this.state.car}
-			</div>
-			)
-	}	
+		<div className="letter"	onClick={switchColor} style={{backgroundColor: bgColor}} >
+			{car}
+		</div>
+		)	
 }
 
 export default Letter;
