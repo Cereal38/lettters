@@ -9,7 +9,7 @@ class Letter extends Component {
 		super(props);
 		this.state = {
 			bgColor: "",
-			statusClick: false,
+			clickable: true,
 			car: this.props.car,
 		}
 	}
@@ -17,14 +17,8 @@ class Letter extends Component {
 	letterClick = (event) => {
 		if (this.state.statusClick == true) {
 			this.setState({
-				bgColor: "",
-				statusClick: false,
-			});
-		}
-		else {
-			this.setState({
 				bgColor: "#777777",
-				statusClick: true,
+				statusClick: false,
 			});
 		}
 

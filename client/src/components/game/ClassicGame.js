@@ -31,17 +31,14 @@ const lettersArray = generateArrayRandomLetters(10);
 const ClassicGame = () => {
 
 
-	const [lettersUser, setLetters] = useState({0: "B", 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: ""});
-	
-	function addLetter(index) {
+	const [lettersUser, setLetters] = useState([]);
 
-		// Use IFs to define
+	function addLetter(event) {
+		/* When user click on a letter add it to the list and show it in the user letters bar */
 
-		setLetters([{0: "A", 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: ""}]);
+		const letter = event.target.textContent;
 
-		console.log(lettersUser);
-
-		forceUpdate();
+		if (lettersUser.length < 10) { setLetters([...lettersUser, letter]); }
 	}
 
 
@@ -50,29 +47,15 @@ const ClassicGame = () => {
 		<div className="classic-game">
 
 			<div className="classic-game__given-letters">
-				<div onClick={ () => {addLetter(0)} }> <Letter car={ lettersArray[0] } /> </div>
-				<div onClick={ () => {addLetter(1)} }> <Letter car={ lettersArray[1] } /> </div>
-				<div onClick={ () => {addLetter(2)} }> <Letter car={ lettersArray[2] } /> </div>
-				<div onClick={ () => {addLetter(3)} }> <Letter car={ lettersArray[3] } /> </div>
-				<div onClick={ () => {addLetter(4)} }> <Letter car={ lettersArray[4] } /> </div>
-				<div onClick={ () => {addLetter(5)} }> <Letter car={ lettersArray[5] } /> </div>
-				<div onClick={ () => {addLetter(6)} }> <Letter car={ lettersArray[6] } /> </div>
-				<div onClick={ () => {addLetter(7)} }> <Letter car={ lettersArray[7] } /> </div>
-				<div onClick={ () => {addLetter(8)} }> <Letter car={ lettersArray[8] } /> </div>
-				<div onClick={ () => {addLetter(9)} }> <Letter car={ lettersArray[9] } /> </div>
+
+				{ lettersArray.map(letter => <div onClick={addLetter} > <Letter car={ letter } /> </div>) }
+
 			</div>
 
 			<div className="classic-game__user-letters">
-				<Letter car={ lettersUser[0] } />
-				<Letter />
-				<Letter />
-				<Letter />
-				<Letter />
-				<Letter />
-				<Letter />
-				<Letter />
-				<Letter />
-				<Letter />
+
+				{ lettersUser.map(letter => <Letter car={ letter } />) }
+
 			</div>
 		</div>
 		)
