@@ -15,6 +15,9 @@ IDEAS :
    Array with n times all letters (depend on use rate in english language)
    Draw 10 random (using seed) to make the set
 
+   Alternative : Letters of the day set is in a DB. 
+   Check all possible words server side
+
 -> Letters changes everydays at 00:00
 
 -> Other gamemods
