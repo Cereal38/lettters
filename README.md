@@ -1,5 +1,5 @@
 ################
-### LETTTERS ###
+--- LETTTERS ---
 ################
 
 Online game project
@@ -16,7 +16,7 @@ IDEAS :
    Draw 10 random (using seed) to make the set
 
    Alternative : Letters of the day set is in a DB. 
-   Check all possible words server side
+   Check all possible words server side (Iterate on dico /!\ don't try every possibilities)
 
 -> Letters changes everydays at 00:00
 
