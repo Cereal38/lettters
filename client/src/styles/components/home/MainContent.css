@@ -1,5 +1,5 @@
 
-.main-content {
+.home-main-content {
 
 	display: flex;
 	flex-direction: column;
@@ -10,9 +10,9 @@
 	width: 100%;
 }
 
-	.main-content__logo-box {
+	.home-main-content__logo-box {
 
-		margin: 0px;
+		margin: 0;
 		margin-bottom: 40px;
 		padding: 20px;
 		
@@ -22,11 +22,16 @@
 
 		border-radius: 15px;
 
-		background: #0085FF;
+	    user-select: none; /* supported by Chrome and Opera */
+	   	-webkit-user-select: none; /* Safari */
+	   	-khtml-user-select: none; /* Konqueror HTML */
+	   	-moz-user-select: none; /* Firefox */
+	   	-ms-user-select: none; /* Internet Explorer/Edge */
 
+	   	background: #0085FF;
 	}
 
-	.main-content__play-link {
+	.home-main-content__play-link {
 
 		padding: 15px;
 
@@ -37,10 +42,10 @@
 
 		border-radius: 15px;
 
-		background: #FF80BF;
+		background: #FF8C00;
 	}
 
-	.main-content__play-link:hover {
+		.home-main-content__play-link:hover {
 
-		background: #FF508F;
-	}
+			background: #DD6F00;
+		}

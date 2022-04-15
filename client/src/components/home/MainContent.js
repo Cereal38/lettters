@@ -7,9 +7,9 @@ const MainContent = () => {
 
 	return (
 
-		<div className="main-content">
-			<h1 className="main-content__logo-box">Lettters</h1>
-			<Link className="main-content__play-link" to="/game">Play</Link>
+		<div className="home-main-content">
+			<h1 className="home-main-content__logo-box">Lettters</h1>
+			<Link className="home-main-content__play-link" to="/game">Play</Link>
 		</div>
 	)
 }
