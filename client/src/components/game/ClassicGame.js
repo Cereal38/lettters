@@ -10,8 +10,7 @@ import CheckWords from '../../myModules/checkWords.js';
 /* --- CONSTANTES --- */
 const bgLight = "";
 const bgDark = "#BBBBBB";
-const bgRight = "#00FF00";
-const bgWrong = "#FF0000";
+
 // lettersArray -> Letters displayed in 1st square
 const lettersArray = LettersGenerator.generateArrayRandomLettersWithUseRate(10);
 
