@@ -11,7 +11,7 @@ module.exports.addLetters = async (req, res) => {
 
 	try {
 
-		const letters = await LettersModel.create({ date, letters, possibleWords });
+		const user = await LettersModel.create({date, letters, possibleWords});
 		res.status(201).json({ letters: letters._id });
 	}
 	catch(err) { res.status(200).send({ err }); }

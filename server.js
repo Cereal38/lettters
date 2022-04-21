@@ -1,11 +1,24 @@
 
 const express = require('express');
+const cors = require('cors');
+const lettersRoutes = require('./routes/letters.routes.js');
 require('dotenv').config({path: './config/.env'});
 require('./config/db');
 
-const lettersRoutes = require('./routes/letters.routes.js');
-
 const app = express();
+
+// Only client part of the website is allowed to do requests
+const corsOptions = {
+
+	origin: process.env.CLIENT_URL,
+	credentials: true,
+	'allowedHeaders': ['sessionId', 'Content-Type'],
+	'exposedHeaders': ['sessionId'],
+	'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+	'preflightContinue': false
+}
+
+app.use(cors(corsOptions));
 
 
 // Modif req - Convert it to json
