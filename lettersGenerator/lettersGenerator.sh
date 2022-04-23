@@ -3,13 +3,16 @@
 
 # IMPORTANT : Give date as argument -> 1501 = 15 january
 
+# Create a repo to stock result
+mkdir resultLetters
+
 # Create temp file to stock infos (Delete old one if needed)
 rm tempLettersGenerator.tmp 2>/dev/null
 touch tempLettersGenerator.tmp
 
 # Create a result file with all infos needed (Delete old one)
-rm resultLettersGenerator.txt 2>/dev/null
-touch resultLettersGenerator.txt
+rm resultLetters/resultLettersGenerator$1.txt 2>/dev/null
+touch resultLetters/resultLettersGenerator$1.txt
 
 lenFrequencies=`wc -l lettersFrequencies.txt | cut -d " " -f1`
 
@@ -43,42 +46,54 @@ do
 
 	if [ $possible = "true" ]
 	then
-		#echo -e "${GREEN}$word${NOCOLOR}"
-		echo $word >> resultLettersGenerator.txt
-	#else
-		#echo -e "${RED}$word${NOCOLOR}"
+		echo -e "${GREEN}$word${NOCOLOR}"
+		echo $word >> tempLettersGenerator.tmp
+	else
+		echo -e "${RED}$word${NOCOLOR}"
 	fi
 
 		
 done
 
 # Send datas in result file (JSON format)
-echo { >> resultLettersGenerator.txt
+echo { >> resultLetters/resultLettersGenerator$1.txt
 
-echo "	\"date\": \"$1\"," >> resultLettersGenerator.txt
+echo "	\"date\": \"$1\"," >> resultLetters/resultLettersGenerator$1.txt
 
-echo -n "	\"letters\": [" >> resultLettersGenerator.txt
+echo -n "	\"letters\": [" >> resultLetters/resultLettersGenerator$1.txt
 
 for (( i=1; i<=10; i++ ))
 do
 	
-	echo -n "'`sed -n $i\p tempLettersGenerator.tmp`'" >> resultLettersGenerator.txt
+	echo -n "'`sed -n $i\p tempLettersGenerator.tmp`'" >> resultLetters/resultLettersGenerator$1.txt
 
 	if (( $i != 10 ))
 	then
-		echo -n ", " >> resultLettersGenerator.txt
+		echo -n ", " >> resultLetters/resultLettersGenerator$1.txt
 	fi
 done
 
-echo "]," >> resultLettersGenerator.txt
+echo "]," >> resultLetters/resultLettersGenerator$1.txt
 
-echo -n "	\"possibleWords\": [" >> resultLettersGenerator.txt
+echo -n "	\"possibleWords\": [" >> resultLetters/resultLettersGenerator$1.txt
 
-echo "]" >> resultLettersGenerator.txt
+for (( i=11; i<=`wc -l tempLettersGenerator.tmp | cut -d " " -f1`; i++ ))
+do
+	
+	echo -n "'`sed -n $i\p tempLettersGenerator.tmp`'" >> resultLetters/resultLettersGenerator$1.txt
 
-echo } >> resultLettersGenerator.txt
+	if (( $i != `wc -l tempLettersGenerator.tmp | cut -d " " -f1` ))
+	then
+		echo -n ", " >> resultLetters/resultLettersGenerator$1.txt
+	fi
+done
 
-cat resultLettersGenerator.txt
+
+echo "]" >> resultLetters/resultLettersGenerator$1.txt
+
+echo } >> resultLetters/resultLettersGenerator$1.txt
+
+cat resultLetters/resultLettersGenerator$1.txt
 
 # Delete temp file
 rm tempLettersGenerator.tmp
