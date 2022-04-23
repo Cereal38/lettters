@@ -1,12 +1,12 @@
 
-./lettersGenerator.sh 0101
-./lettersGenerator.sh 0102
-./lettersGenerator.sh 0103
-./lettersGenerator.sh 0104
-./lettersGenerator.sh 0105
-./lettersGenerator.sh 0106
-./lettersGenerator.sh 0107
-./lettersGenerator.sh 0108
+#./lettersGenerator.sh 0101
+#./lettersGenerator.sh 0102
+#./lettersGenerator.sh 0103
+#./lettersGenerator.sh 0104
+#./lettersGenerator.sh 0105
+#./lettersGenerator.sh 0106
+#./lettersGenerator.sh 0107
+#./lettersGenerator.sh 0108
 ./lettersGenerator.sh 0109
 ./lettersGenerator.sh 0110
 ./lettersGenerator.sh 0111

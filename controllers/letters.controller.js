@@ -14,7 +14,7 @@ module.exports.addLetters = async (req, res) => {
 		const user = await LettersModel.create({date, letters, possibleWords});
 		res.status(201).json({ letters: letters._id });
 	}
-	catch(err) { res.status(200).send({ err }); }
+	catch(err) { res.status(200).send({ err }); console.log(err) }
 }
 
 
@@ -30,13 +30,10 @@ module.exports.getAllLetters = async(req, res) => {
 // Get one letters object (find by date)
 module.exports.getOneLetters = async(req, res) => {
 
-	// ObjectID return true if ID in DB
-	if (!ObjectID.isValid(req.params.id)) { return res.status(400).send("ID unknown : " + req.params.id); }
-	else {
-		LettersModel.findById(req.params.id, (err, docs) => {
-			console.log("bouh");
-			if (!err) { res.send(docs); }
-			else { console.log("ID unknown : " + req.params.id); }
-		});
+	try {
+
+		const resultJson = await LettersModel.findOne({ date: req.params.date });
+		res.status(200).json(resultJson);
 	}
+	catch(err) { res.status(200).send({ err }); console.log(err) }
 }

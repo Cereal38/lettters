@@ -4,7 +4,7 @@
 # IMPORTANT : Give date as argument -> 1501 = 15 january
 
 # Create a repo to stock result
-mkdir resultLetters
+mkdir resultLetters 2>/dev/null
 
 # Create temp file to stock infos (Delete old one if needed)
 rm tempLettersGenerator.tmp 2>/dev/null
@@ -65,7 +65,7 @@ echo -n "	\"letters\": [" >> resultLetters/resultLettersGenerator$1.txt
 for (( i=1; i<=10; i++ ))
 do
 	
-	echo -n "'`sed -n $i\p tempLettersGenerator.tmp`'" >> resultLetters/resultLettersGenerator$1.txt
+	echo -n "\"`sed -n $i\p tempLettersGenerator.tmp`\"" >> resultLetters/resultLettersGenerator$1.txt
 
 	if (( $i != 10 ))
 	then
@@ -80,7 +80,7 @@ echo -n "	\"possibleWords\": [" >> resultLetters/resultLettersGenerator$1.txt
 for (( i=11; i<=`wc -l tempLettersGenerator.tmp | cut -d " " -f1`; i++ ))
 do
 	
-	echo -n "'`sed -n $i\p tempLettersGenerator.tmp`'" >> resultLetters/resultLettersGenerator$1.txt
+	echo -n "\"`sed -n $i\p tempLettersGenerator.tmp`\"" >> resultLetters/resultLettersGenerator$1.txt
 
 	if (( $i != `wc -l tempLettersGenerator.tmp | cut -d " " -f1` ))
 	then

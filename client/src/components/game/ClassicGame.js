@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Letter from './Letter';
 import '../../styles/components/game/ClassicGame.css';
-import LettersGenerator from '../../myModules/lettersGenerator.js';
 import CheckWords from '../../myModules/checkWords.js';
 
 
@@ -21,6 +20,9 @@ const ClassicGame = () => {
 
 	// lettersArray = Letters displayed in 1st square
 	const [lettersArray, setLettersArray] = useState([]);
+
+	// possibleWords = Possibles words to make
+	const [possibleWords, setPossibleWords] = useState([]);
 
 	// letterUser = Letters displayed in 2nd square
 	const [lettersUser, setLettersUser] = useState([]);
@@ -92,7 +94,7 @@ const ClassicGame = () => {
 	function onClickSubmit() {
 
 		// Check if word is valid and clear board
-		if (CheckWords.checkIfWordInList(lettersUser.join(''))) {
+		if (CheckWords.checkIfWordInList(possibleWords, lettersUser.join(''))) {
 			alert("Valid !")
 			clear();
 		}
@@ -110,15 +112,15 @@ const ClassicGame = () => {
 	}
 
 	// Similar to componentDidMount()
-	// Get letters from api
+	// Get letters and possibleWords from api
 	// Give an empty array to useEffect allow the page to load only one time
 	useEffect(() => {
 
-		const url = 'http://localhost:5000/api/letters/get-one-letters/6261214ef79480a81ab4b3f4'; 
+		const url = 'http://localhost:5000/api/letters/get-one-letters/0101'; 
 
 		fetch(url)
 			.then((res) => { res.json()
-				.then((json) => { setLettersArray(json.letters); });
+				.then((json) => { setLettersArray(json.letters); setPossibleWords(json.possibleWords); });
 			});
 	}, []);
 

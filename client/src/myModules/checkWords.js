@@ -1,12 +1,10 @@
 
 class CheckWords {
 
-	static checkIfWordInList(word) {
+	static checkIfWordInList(possibleWords, word) {
 		/* If word in list return true else false */
 
-		const listExists = ["RA", "BA", "BE", "RE"];
-
-		return (listExists.includes(word));
+		return (possibleWords.includes(word));
 	}
 }
 
