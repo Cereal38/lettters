@@ -1,5 +1,5 @@
 
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 import Letter from './Letter';
 import '../../styles/components/game/ClassicGame.css';
 import LettersGenerator from '../../myModules/lettersGenerator.js';
@@ -12,13 +12,15 @@ const bgLight = "";
 const bgDark = "#BBBBBB";
 
 // lettersArray -> Letters displayed in 1st square
-const lettersArray = LettersGenerator.generateArrayRandomLettersWithUseRate(10);
+// const lettersArray = LettersGenerator.generateArrayRandomLettersWithUseRate(10);
 
 
 
 /* --- COMPONENT --- */
 const ClassicGame = () => {
 
+	// lettersArray = Letters displayed in 1st square
+	const [lettersArray, setLettersArray] = useState([]);
 
 	// letterUser = Letters displayed in 2nd square
 	const [lettersUser, setLettersUser] = useState([]);
@@ -106,6 +108,19 @@ const ClassicGame = () => {
 		console.log("LettersUser : ", lettersUser);
 		console.log("Clickable : ", clickable);
 	}
+
+	// Similar to componentDidMount()
+	// Get letters from api
+	// Give an empty array to useEffect allow the page to load only one time
+	useEffect(() => {
+
+		const url = 'http://localhost:5000/api/letters/get-one-letters/6261214ef79480a81ab4b3f4'; 
+
+		fetch(url)
+			.then((res) => { res.json()
+				.then((json) => { setLettersArray(json.letters); });
+			});
+	}, []);
 
 
 

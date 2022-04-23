@@ -1,0 +1,11 @@
+DR
+DRY
+FRY
+MR
+MY
+TRY
+{
+	"date": "",
+	"letters": ['T', 'N', 'T', 'Y', 'M', 'D', 'R', 'M', 'N', 'F'],
+	"possibleWords": []
+}

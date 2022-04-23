@@ -34,7 +34,7 @@ module.exports.getOneLetters = async(req, res) => {
 	if (!ObjectID.isValid(req.params.id)) { return res.status(400).send("ID unknown : " + req.params.id); }
 	else {
 		LettersModel.findById(req.params.id, (err, docs) => {
-
+			console.log("bouh");
 			if (!err) { res.send(docs); }
 			else { console.log("ID unknown : " + req.params.id); }
 		});
