@@ -7,11 +7,11 @@
 #./lettersGenerator.sh 0106
 #./lettersGenerator.sh 0107
 #./lettersGenerator.sh 0108
-./lettersGenerator.sh 0109
-./lettersGenerator.sh 0110
-./lettersGenerator.sh 0111
-./lettersGenerator.sh 0112
-./lettersGenerator.sh 0113
+#./lettersGenerator.sh 0109
+#./lettersGenerator.sh 0110
+#./lettersGenerator.sh 0111
+#./lettersGenerator.sh 0112
+#./lettersGenerator.sh 0113
 ./lettersGenerator.sh 0114
 ./lettersGenerator.sh 0115
 ./lettersGenerator.sh 0116

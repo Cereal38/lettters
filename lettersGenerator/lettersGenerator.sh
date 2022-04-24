@@ -30,7 +30,7 @@ do
 done
 
 
-lenAllWords=`wc -l allWords.txt | cut -d " " -f1`
+lenAllWords=`wc -l newAllWords.txt | cut -d " " -f1`
 
 # Check all words and save them if it's possible to make them using our 10 letters
 GREEN='\033[0;32m'
@@ -40,7 +40,7 @@ NOCOLOR='\033[0m'
 for (( i=1; i<=lenAllWords; i++ ))
 do
 	
-	word=`sed -n $i\p allWords.txt`
+	word=`sed -n $i\p newAllWords.txt`
 
 	possible=`python3 checkWord.py $lettersList $word`
 

@@ -6,9 +6,23 @@
 	justify-content: flex-start;
 	align-items: center;
 
-	height: 500px;
 	width: 1000px;
 }
+
+	.classic-game__words-count {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		margin-bottom: 40px;
+		padding: 10px;
+
+		border: #0088FF 4px solid;
+		border-radius: 10px;
+
+		font-size: 2em;
+		font-weight: bold;
+	}
 	
 	.classic-game__spawn-letter {
 

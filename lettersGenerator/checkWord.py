@@ -14,28 +14,20 @@ def checkWord(lettersList, word):
 
 	result = "true"
 
-	# Check len
-	if len(word) > 10:
+	for i in range(len(word)):
 		
-		print("false")
-		return
-
-	else:
-		
-		for i in range(len(word)):
+		# Find pos of letter in letterList (-1 if not exist)
+		posLetter = lettersList.find(word[i])
 			
-			# Find pos of letter in letterList (-1 if not exist)
-			posLetter = lettersList.find(word[i])
-				
-			if posLetter == -1:
-				
-				print("false")
-				return
+		if posLetter == -1:
+			
+			print("false")
+			return
 
-			else:
-				
-				# Remove letter from letterList
-				lettersList = lettersList.replace(word[i], "", 1)
+		else:
+			
+			# Remove letter from letterList
+			lettersList = lettersList.replace(word[i], "", 1)
 			
 	print(result)
 
