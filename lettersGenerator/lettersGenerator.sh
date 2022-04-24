@@ -46,10 +46,10 @@ do
 
 	if [ $possible = "true" ]
 	then
-		echo -e "${GREEN}$word${NOCOLOR}"
+		# echo -e "${GREEN}$word${NOCOLOR}"
 		echo $word >> tempLettersGenerator.tmp
-	else
-		echo -e "${RED}$word${NOCOLOR}"
+	#else
+		# echo -e "${RED}$word${NOCOLOR}"
 	fi
 
 		

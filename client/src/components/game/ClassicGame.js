@@ -17,19 +17,6 @@ const bgDark = "#BBBBBB";
 const ClassicGame = () => {
 
 
-	// Similar to componentDidMount()
-	// Get letters and possibleWords from api
-	// Give an empty array to useEffect allow the page to load only one time
-	useEffect(() => {
-
-		const url = 'http://localhost:5000/api/letters/get-one-letters/0101'; 
-
-		fetch(url)
-			.then((res) => { res.json()
-				.then((json) => { setLettersArray(json.letters); setPossibleWords(json.possibleWords); });
-			});
-	}, []);
-
 	// lettersArray = Letters displayed in 1st square
 	const [lettersArray, setLettersArray] = useState([]);
 
@@ -52,6 +39,33 @@ const ClassicGame = () => {
 
 	// Color of words counter
 	const [wordsCountColor, setWordsCountColor] = useState('#FBFBCC');
+
+
+	// Similar to componentDidMount()
+	// Get letters and possibleWords from api
+	// Give an empty array to useEffect allow the page to load only one time
+	useEffect(() => {
+
+		// Get day and month
+		const date = new Date();
+		let day = date.getDate().toString(10);
+		let month = date.getMonth().toString(10);
+
+		if (day.length < 2) { day = "0" + day; }
+		if (month.length < 2) { month = "0" + month; }
+
+		let dateString = month + day;
+
+		// DELETE IT
+		dateString = '0102'
+
+		const url = 'http://localhost:5000/api/letters/get-one-letters/' + dateString; 
+
+		fetch(url)
+			.then((res) => { res.json()
+				.then((json) => { setLettersArray(json.letters); setPossibleWords(json.possibleWords); });
+			});
+	}, []);
 
 
 	function changeBgColor(indexRow, indexCol, lightOrDark) {
