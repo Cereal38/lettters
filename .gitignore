@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# PERSO
+/node_modules
+/config/.env
+lettersGenerator/resultLetters/
+lettersGenerator/tempLettersGenerator.tmp

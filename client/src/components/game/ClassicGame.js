@@ -1,25 +1,29 @@
 
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 import Letter from './Letter';
 import '../../styles/components/game/ClassicGame.css';
-import LettersGenerator from '../../myModules/lettersGenerator.js';
-import CheckWords from '../../myModules/checkWords.js';
-
 
 
 /* --- CONSTANTES --- */
 const bgLight = "";
 const bgDark = "#BBBBBB";
-const bgRight = "#00FF00";
-const bgWrong = "#FF0000";
+
 // lettersArray -> Letters displayed in 1st square
-const lettersArray = LettersGenerator.generateArrayRandomLettersWithUseRate(10);
+// const lettersArray = LettersGenerator.generateArrayRandomLettersWithUseRate(10);
 
 
 
 /* --- COMPONENT --- */
 const ClassicGame = () => {
 
+
+	// lettersArray = Letters displayed in 1st square
+	const [lettersArray, setLettersArray] = useState([]);
+
+	// possibleWords = Possibles words to make
+	const [possibleWords, setPossibleWords] = useState([]);
+
+	const [foundWords, setFoundWords] = useState([]);
 
 	// letterUser = Letters displayed in 2nd square
 	const [lettersUser, setLettersUser] = useState([]);
@@ -33,6 +37,32 @@ const ClassicGame = () => {
 	const [bgColor, setBgColor] = useState([[bgLight, bgLight, bgLight, bgLight, bgLight, bgLight, bgLight, bgLight, bgLight, bgLight], 
 		[bgDark, bgDark, bgDark, bgDark, bgDark, bgDark, bgDark, bgDark, bgDark, bgDark]]);
 
+	// Color of words counter
+	const [wordsCountColor, setWordsCountColor] = useState('#FBFBCC');
+
+
+	// Similar to componentDidMount()
+	// Get letters and possibleWords from api
+	// Give an empty array to useEffect allow the page to load only one time
+	useEffect(() => {
+
+		// Get day and month
+		const date = new Date();
+		let day = date.getDate().toString(10);
+		let month = (date.getMonth()+1).toString(10);
+
+		if (day.length < 2) { day = "0" + day; }
+		if (month.length < 2) { month = "0" + month; }
+
+		let dateString = month + day;
+		
+		const url = 'http://localhost:5000/api/letters/get-one-letters/' + dateString; 
+
+		fetch(url)
+			.then((res) => { res.json()
+				.then((json) => { setLettersArray(json.letters); setPossibleWords(json.possibleWords); });
+			});
+	}, []);
 
 
 	function changeBgColor(indexRow, indexCol, lightOrDark) {
@@ -90,22 +120,42 @@ const ClassicGame = () => {
 
 	function onClickSubmit() {
 
-		// Check if word is valid and clear board
-		if (CheckWords.checkIfWordInList(lettersUser.join(''))) {
-			alert("Valid !")
+		const word = lettersUser.join('');
+
+		// Check if word was already found
+		if (foundWords.includes(word)) {
+		
+			window.alert("Word already found !  :(");
+
 			clear();
 		}
+		
+		// If word is valid
+		else if (possibleWords.includes(word)) {
 
-		else { alert("Unvalid !"); }
-	}
+			setFoundWords([...foundWords, word]);
 
+			clear();
 
-	function showInfos() {
-		/* TEMP FUNC : Display some infos */
+			// Change words counter background color for 0.5s
+			setWordsCountColor('#63d547');
 
-		console.log("LettersArray : ", lettersArray);
-		console.log("LettersUser : ", lettersUser);
-		console.log("Clickable : ", clickable);
+			setTimeout(() => {
+
+				setWordsCountColor('#FBFBCC');
+			}, 500)
+		
+		}
+
+		else {
+
+			setWordsCountColor('#ED3E3E');
+
+			setTimeout(() => {
+
+				setWordsCountColor('#FBFBCC');
+			}, 500)
+		}
 	}
 
 
@@ -114,7 +164,12 @@ const ClassicGame = () => {
 
 		<div className="classic-game">
 
-			<button onClick={showInfos} > Show infos </button>
+			<div className="classic-game__words-count"
+				style={{ backgroundColor: wordsCountColor }}>
+
+				{ foundWords.length } / { possibleWords.length }
+
+			</div>
 
 			<div className="classic-game__given-letters">
 

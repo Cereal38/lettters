@@ -9,7 +9,7 @@ const Footer = () => {
 		<div className="footer-div">
 			<span className="footer-div__name">Developper : Cereal</span>
 			<a className="footer-div__github" href="https://github.com/Cereal38/lettters"
-				target="_blank">Check code on Github</a>
+				target="_blank" rel="noopener noreferrer" >Check code on Github</a>
 		</div>
 	)
 }
