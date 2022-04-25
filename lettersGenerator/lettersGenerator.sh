@@ -29,31 +29,7 @@ do
 	echo $letter >> tempLettersGenerator.tmp
 done
 
-
-lenAllWords=`wc -l newAllWords.txt | cut -d " " -f1`
-
-# Check all words and save them if it's possible to make them using our 10 letters
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NOCOLOR='\033[0m'
-
-for (( i=1; i<=lenAllWords; i++ ))
-do
-	
-	word=`sed -n $i\p newAllWords.txt`
-
-	possible=`python3 checkWord.py $lettersList $word`
-
-	if [ $possible = "true" ]
-	then
-		# echo -e "${GREEN}$word${NOCOLOR}"
-		echo $word >> tempLettersGenerator.tmp
-	#else
-		# echo -e "${RED}$word${NOCOLOR}"
-	fi
-
-		
-done
+python3 wordsFinder.py $lettersList >> tempLettersGenerator.tmp
 
 # Send datas in result file (JSON format)
 echo { >> resultLetters/resultLettersGenerator$1.txt

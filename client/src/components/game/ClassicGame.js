@@ -49,16 +49,13 @@ const ClassicGame = () => {
 		// Get day and month
 		const date = new Date();
 		let day = date.getDate().toString(10);
-		let month = date.getMonth().toString(10);
+		let month = (date.getMonth()+1).toString(10);
 
 		if (day.length < 2) { day = "0" + day; }
 		if (month.length < 2) { month = "0" + month; }
 
 		let dateString = month + day;
-
-		// DELETE IT
-		dateString = '0102'
-
+		
 		const url = 'http://localhost:5000/api/letters/get-one-letters/' + dateString; 
 
 		fetch(url)
