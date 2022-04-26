@@ -131,6 +131,8 @@ dmypy.json
 
 # PERSO
 /node_modules
+client/node_modules
 /config/.env
 lettersGenerator/resultLetters/
 lettersGenerator/tempLettersGenerator.tmp
+
