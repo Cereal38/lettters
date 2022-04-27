@@ -1,5 +1,6 @@
 
 Create a .env file which contains :
 
--> PORT
--> 
+-> PORT=5000
+-> CLIENT_URL=http://localhost:3000
+-> DB_USER_PASS=Pseudo:Mdp
